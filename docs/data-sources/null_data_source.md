@@ -1,12 +1,6 @@
----
-layout: "null"
-page_title: "Null Resource"
-sidebar_current: "docs-data-source"
-description: |-
-  A resource that does nothing.
----
+# Null Data Source
 
-# Null Resource
+*A data source that does nothing.*
 
 The `null_data_source` data source implements the standard data source
 lifecycle but does not interact with any external APIs.

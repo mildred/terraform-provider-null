@@ -24,9 +24,22 @@ care and other solutions preferred when available.
 
 See documentation for resources:
 
-- [null_resource](docs/resource.html.markdown)
+- [null_resource](docs/resources/null_resource.md)
 
 and for data sources:
 
-- [null_data_source](docs/data_source.html.markdown)
+- [null_data_source](docs/data-sources/null_data_source.md)
+
+Making a release
+----------------
+
+From the [upstream documentation](https://www.terraform.io/docs/registry/providers/publishing.html):
+
+- `export GPG_FINGERPRINT=01230FD4CC29DE17`
+- `export GITHUB_TOKEN=...`
+- Cache passphrase with `gpg --armor --detach-sign --local-user $GPG_FINGERPRINT </dev/null`
+- Create tag: `git tag -s -u $GPG_FINGERPRINT vx.x.x`
+- Make release: `goreleaser release --rm-dist`
+
+
 
