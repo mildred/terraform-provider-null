@@ -6,46 +6,27 @@ Maintainers
 
 This provider plugin is not maintained by the Terraform team but is a private effort.
 
-Resources
----------
+Usage
+-----
 
-### null_resource
+The `null` provider is a rather-unusual provider that has constructs that
+intentionally do nothing. This may sound strange, and indeed these constructs
+do not need to be used in most cases, but they can be useful in various
+situations to help orchestrate tricky behavior or work around limitations.
 
-Inputs:
+The documentation of each feature of this provider, accessible via the
+navigation, gives examples of situations where these constructs may prove
+useful.
 
-- `triggers`: optional `map` (forces new resource)
+Usage of the `null` provider can make a Terraform configuration harder to
+understand. While it can be useful in certain cases, it should be applied with
+care and other solutions preferred when available.
 
-Outputs:
+See documentation for resources:
 
-- `id`: generated `string`
+- [null_resource](docs/resource.html.markdown)
 
-  Random id, regenerated when the resource is created
-  Items that can be specified in the resource and that force resource creation
+and for data sources:
 
-Data Sources
-------------
-
-### null_data_source
-
-Inputs:
-
-- `inputs`: optional `map`
-
-  A list of items that are input to the data source
-
-- `has_computed_default`: optional `string`
-
-Outputs:
-
-- `id`: computed `string` with value `"static"`
-
-- `outputs`: computed `map`
-
-  The list of inputs that is set when the data source is read
-
-- `random`: computed `string`
-
-  A random string that is regenerated on each new read
-
-- `has_computed_default`: computed `string`
+- [null_data_source](docs/data_source.html.markdown)
 
