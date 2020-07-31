@@ -1,67 +1,51 @@
-Terraform `null` Provider
-=========================
-
-- Website: https://www.terraform.io
-- [![Gitter chat](https://badges.gitter.im/hashicorp-terraform/Lobby.png)](https://gitter.im/hashicorp-terraform/Lobby)
-- Mailing list: [Google Groups](http://groups.google.com/group/terraform-tool)
-
-<img src="https://cdn.rawgit.com/hashicorp/terraform-website/master/content/source/assets/images/logo-hashicorp.svg" width="600px">
+Mildred's terraform `null` Provider
+===================================
 
 Maintainers
 -----------
 
-This provider plugin is maintained by the Terraform team at [HashiCorp](https://www.hashicorp.com/).
+This provider plugin is not maintained by the Terraform team but is a private effort.
 
-Requirements
+Resources
+---------
+
+### null_resource
+
+Inputs:
+
+- `triggers`: optional `map` (forces new resource)
+
+Outputs:
+
+- `id`: generated `string`
+
+  Random id, regenerated when the resource is created
+  Items that can be specified in the resource and that force resource creation
+
+Data Sources
 ------------
 
--	[Terraform](https://www.terraform.io/downloads.html) 0.10.x
--	[Go](https://golang.org/doc/install) 1.8 (to build the provider plugin)
+### null_data_source
 
-Building The Provider
----------------------
+Inputs:
 
-Clone repository to: `$GOPATH/src/github.com/terraform-providers/terraform-provider-null`
+- `inputs`: optional `map`
 
-```sh
-$ git clone git@github.com:terraform-providers/terraform-provider-null $GOPATH/src/github.com/terraform-providers/terraform-provider-null
-```
+  A list of items that are input to the data source
 
-Enter the provider directory and build the provider
+- `has_computed_default`: optional `string`
 
-```sh
-$ cd $GOPATH/src/github.com/terraform-providers/terraform-provider-null
-$ make build
-```
+Outputs:
 
-Using the provider
-----------------------
-## Fill in for each provider
+- `id`: computed `string` with value `"static"`
 
-Developing the Provider
----------------------------
+- `outputs`: computed `map`
 
-If you wish to work on the provider, you'll first need [Go](http://www.golang.org) installed on your machine (version 1.8+ is *required*). You'll also need to correctly setup a [GOPATH](http://golang.org/doc/code.html#GOPATH), as well as adding `$GOPATH/bin` to your `$PATH`.
+  The list of inputs that is set when the data source is read
 
-To compile the provider, run `make build`. This will build the provider and put the provider binary in the `$GOPATH/bin` directory.
+- `random`: computed `string`
 
-```sh
-$ make bin
-...
-$ $GOPATH/bin/terraform-provider-null
-...
-```
+  A random string that is regenerated on each new read
 
-In order to test the provider, you can simply run `make test`.
+- `has_computed_default`: computed `string`
 
-```sh
-$ make test
-```
-
-In order to run the full suite of Acceptance tests, run `make testacc`.
-
-*Note:* Acceptance tests create real resources, and often cost money to run.
-
-```sh
-$ make testacc
-```
